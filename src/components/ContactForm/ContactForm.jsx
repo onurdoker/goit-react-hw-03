@@ -33,10 +33,10 @@ const ContactForm = () => {
                                               .required("Name is required"),
                                      number: Yup.string()
                                                 .min(7,
-                                                     "Phone number must be at least 7 numbers long")
+                                                     "The phone number must contain 7 characters")
                                                 .max(7,
-                                                     "Phone has 7")
-                                                .required("Phone is required"),
+                                                     "The phone number must contain 7 characters")
+                                                .required("Phone number is required"),
                                    });
   
   return (
