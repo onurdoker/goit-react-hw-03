@@ -1,0 +1,36 @@
+.body {
+    color: #ffffff;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+
+}
+
+.name {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    text-align: left;
+    gap: 5px;
+}
+
+input {
+    height: 20px;
+}
+
+button {
+    align-self: center;
+    width: 150px;
+    margin-top: 20px;
+    border: 1px solid #ffffff;
+}
+
+.error {
+    color: #ff0000;
+}
