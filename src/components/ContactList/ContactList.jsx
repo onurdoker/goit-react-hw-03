@@ -5,15 +5,31 @@ import styles from "./ContactList.module.css";
 
 import Contact from "../contact/Contact";
 
-const ContactList = () => {
+const ContactList = ({
+                       contact,
+                       searchedPerson,
+                     }) => {
   
+  
+  let modifiedContacts = [];
+  
+  if (searchedPerson) {
+    modifiedContacts = Contact.filter((person) => person.name.toLowerCase()
+                                                        .startsWith(searchedPerson));
+  } else {
+    modifiedContacts = Contact.sort((a,
+                                     b) => a.name.localeCompare(b.name));
+  }
   
   return (
       <div className={styles.body}>
         <ul>
-          {Contact.map((person) => (
-              <div className={styles.card}>
-                <li key={person.id}>
+          {modifiedContacts.map((person) => (
+              <div
+                  className={styles.card}
+                  key={person.id}
+              >
+                <li>
                   <FaPhone /> {person.name} <br />
                   <IoPersonSharp /> {person.number}
                 </li>
