@@ -7,3 +7,8 @@
     width: 100%;
     height: 20px;
 }
+
+p {
+    text-align: center;
+    color: red;
+}
