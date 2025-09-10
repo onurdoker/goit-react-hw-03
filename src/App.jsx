@@ -1,6 +1,7 @@
 import "./App.css";
 
 import { useState } from "react";
+import { useEffect } from "react";
 import { customAlphabet } from "nanoid";
 
 import ContactForm from "./components/contactform/ContactForm";
@@ -10,7 +11,21 @@ import Contact from "./components/contact/Contact";
 
 function App() {
   
-  const [contact, setContact] = useState(Contact);
+  const nanoid = customAlphabet("0123456789",
+                                3);
+  
+  const [contacts, setContacts] = useState(() => {
+    const savedContacts = localStorage.getItem("contacts");
+    return savedContacts
+        ? JSON.parse(savedContacts)
+        : Contact;
+  });
+  
+  useEffect(() => {
+              localStorage.setItem("contacts",
+                                   JSON.stringify(contacts));
+            },
+            [contacts]);
   
   const [searchedPerson, setSearchedPerson] = useState("");
   
@@ -20,20 +35,23 @@ function App() {
     if (existContact) {
       alert(`${value.name} has already been saved in the phonebook and cannot be saved again`);
     } else {
-      const alphabet = "0123456789";
-      const nanoid = customAlphabet(alphabet,
-                                    3);
-      const id = nanoid();
       
-      value.id = `id-${id}`;
-      setContact([...contact,
-                  value]);
+      const newContact = {
+        id: `id-${nanoid()}`,
+        name: value.name,
+        number: value.number,
+      };
+      setContacts([...contacts,
+                   newContact]);
     }
     
   };
   
+  console.log(contacts);
+  
+  
   const handleDeleteContact = (id) => {
-    setContact(contact.filter((person) => person.id !== id));
+    setContacts(contacts.filter((person) => person.id !== id));
   };
   
   const handleSearchChange = (value) => {
@@ -48,6 +66,7 @@ function App() {
             handleSearchChange={handleSearchChange}
         />
         <ContactList
+            contacts={contacts}
             searchedPerson={searchedPerson}
             handleDeleteContact={handleDeleteContact}
         />

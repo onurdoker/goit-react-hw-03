@@ -3,9 +3,10 @@ import { IoPersonSharp } from "react-icons/io5";
 
 import styles from "./ContactList.module.css";
 
-import Contact from "../contact/Contact";
+// import Contact from "../contact/Contact";
 
 const ContactList = ({
+                       contacts,
                        searchedPerson,
                        handleDeleteContact,
                      }) => {
@@ -14,11 +15,11 @@ const ContactList = ({
   let modifiedContacts = [];
   
   if (searchedPerson) {
-    modifiedContacts = Contact.filter((person) => person.name.toLowerCase()
-                                                        .startsWith(searchedPerson));
+    modifiedContacts = contacts.filter((person) => person.name.toLowerCase()
+                                                         .startsWith(searchedPerson));
   } else {
-    modifiedContacts = Contact.sort((a,
-                                     b) => a.name.localeCompare(b.name));
+    modifiedContacts = contacts.sort((a,
+                                      b) => a.name.localeCompare(b.name));
   }
   
   
