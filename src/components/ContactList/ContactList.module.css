@@ -1,0 +1,32 @@
+.body {
+
+    color: #ffffff;
+}
+
+ul {
+    padding: 0;
+    list-style: none;
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 320px;
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+    gap: 20px;
+}
+
+.person {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn {
+    justify-content: right;
+    width: 100px;
+    margin: 0;
+}

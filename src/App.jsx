@@ -4,9 +4,12 @@ import { useState } from "react";
 
 import ContactForm from "./components/contactform/ContactForm";
 import SearchBox from "./components/searchbox/SearchBox.jsx";
+import ContactList from "./components/ContactList/ContactList";
+import Contact from "./components/contact/Contact";
 
 function App() {
   
+  console.log(Contact);
   const [contact, setContact] = useState({
                                            name: "",
                                            phone: "",
@@ -21,13 +24,12 @@ function App() {
   };
   
   const handleSearchChange = (value) => {
-    setSearchedPerson(value);
+    setSearchedPerson(value.toLowerCase());
   };
   
-  
   //TODO => Do not forget to delete console.log
-  console.log(contact);
-  console.log(searchedPerson);
+  // console.log(contact);
+  // console.log(searchedPerson);
   
   return (
       <div>
@@ -36,6 +38,7 @@ function App() {
         <SearchBox
             handleSearchChange={handleSearchChange}
         />
+        <ContactList />
       
       
       </div>
