@@ -1,12 +1,36 @@
 import "./App.css";
-import ContactForm from "./components/ContactForm/ContactForm";
+
+import { useState } from "react";
+
+import ContactForm from "./components/contactform/ContactForm";
+import SearchBox from "./components/searchbox/SearchBox.jsx";
 
 function App() {
+  
+  const [contact, setContact] = useState({
+                                           name: "",
+                                           phone: "",
+                                         });
+  
+  const [searchedPerson, setSearchedPerson] = useState("");
+  
+  const handleAddContact = (value) => {
+    //! name: value.name
+    //! phone: value.phone
+    setContact(value);
+  };
+  
+  const handleSearchChange = (value) => {
+    setSearchedPerson(value);
+  };
   
   return (
       <div>
         <h1>Phonebook</h1>
-        <ContactForm />
+        <ContactForm handleAddContact={handleAddContact} />
+        <SearchBox
+            handleSearchChange={handleSearchChange}
+        />
       
       
       </div>

@@ -1,10 +1,11 @@
 import styles from "./ContactForm.module.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { useId } from "react";
 import * as Yup from "yup";
 
+import { useId } from "react";
 
-const ContactForm = () => {
+
+const ContactForm = ({ handleAddContact }) => {
   
   const nameId = useId();
   const numberId = useId();
@@ -16,9 +17,7 @@ const ContactForm = () => {
   const handleSubmit = (values,
                         actions) => {
     
-    //TODO => Do not forget to delete console.log
-    console.log(values);
-    console.log(actions);
+    handleAddContact(values);
     
     actions.resetForm();
   };
