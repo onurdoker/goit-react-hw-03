@@ -7,6 +7,8 @@ const SearchBox = ({ handleSearchChange }) => {
     handleSearchChange(event.currentTarget.value);
   };
   
+  //TODO => Check & control entering empty string or digit entries
+  
   const nameId = useId();
   
   return (

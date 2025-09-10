@@ -6,8 +6,8 @@ import styles from "./ContactList.module.css";
 import Contact from "../contact/Contact";
 
 const ContactList = ({
-                       contact,
                        searchedPerson,
+                       handleDeleteContact,
                      }) => {
   
   
@@ -20,6 +20,7 @@ const ContactList = ({
     modifiedContacts = Contact.sort((a,
                                      b) => a.name.localeCompare(b.name));
   }
+  
   
   return (
       <div className={styles.body}>
@@ -36,6 +37,7 @@ const ContactList = ({
                 <button
                     className={styles.btn}
                     type="button"
+                    onClick={() => handleDeleteContact(person.id)}
                 >Delete
                 </button>
               </div>

@@ -22,8 +22,6 @@ const ContactForm = ({ handleAddContact }) => {
     
     handleAddContact(values);
     
-    
-    console.log(values);
     actions.resetForm();
   };
   
@@ -44,7 +42,7 @@ const ContactForm = ({ handleAddContact }) => {
         namee[i] = namee[i].charAt(0)
                            .toUpperCase() + namee[i].slice(1);
         
-        newName = `${newName} ${namee[i]}`;
+        newName = `${newName} ${namee[i]}`.trim();
       }
       
       return newName;
