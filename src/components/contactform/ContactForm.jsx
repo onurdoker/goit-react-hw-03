@@ -16,7 +16,8 @@ const ContactForm = ({ handleAddContact }) => {
   
   const handleSubmit = (values,
                         actions) => {
-    values.name = capitalize(values.name.trim());
+    values.name = capitalize(values.name.trim()
+                                   .toLowerCase());
     values.number = reOrganizeNumber(values.number.trim());
     
     handleAddContact(values);
@@ -28,15 +29,25 @@ const ContactForm = ({ handleAddContact }) => {
   
   function capitalize(name) {
     if (name.includes(" ")) {
-      const firstName = name.split(" ")[0];
-      const lastName = name.split(" ")[1];
+      let count = 0;
+      for (let char of name) {
+        if (char === " ") {
+          count += 1;
+        }
+      }
       
-      const firstNameCap = firstName.charAt(0)
-                                    .toUpperCase() + firstName.slice(1);
-      const lastNameCap = lastName.charAt(0)
-                                  .toUpperCase() + lastName.slice(1);
+      let namee = [];
+      let newName = "";
       
-      return `${firstNameCap} ${lastNameCap}`;
+      for (let i = 0; i <= count; i++) {
+        namee[i] = name.split(" ")[i];
+        namee[i] = namee[i].charAt(0)
+                           .toUpperCase() + namee[i].slice(1);
+        
+        newName = `${newName} ${namee[i]}`;
+      }
+      
+      return newName;
     } else {
       return name.charAt(0)
                  .toUpperCase() + name.slice(1);
