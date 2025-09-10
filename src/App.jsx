@@ -47,9 +47,6 @@ function App() {
     
   };
   
-  console.log(contacts);
-  
-  
   const handleDeleteContact = (id) => {
     setContacts(contacts.filter((person) => person.id !== id));
   };
