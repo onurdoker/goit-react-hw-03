@@ -16,11 +16,39 @@ const ContactForm = ({ handleAddContact }) => {
   
   const handleSubmit = (values,
                         actions) => {
+    values.name = capitalize(values.name.trim());
+    values.number = reOrganizeNumber(values.number.trim());
     
     handleAddContact(values);
     
+    
+    console.log(values);
     actions.resetForm();
   };
+  
+  function capitalize(name) {
+    if (name.includes(" ")) {
+      const firstName = name.split(" ")[0];
+      const lastName = name.split(" ")[1];
+      
+      const firstNameCap = firstName.charAt(0)
+                                    .toUpperCase() + firstName.slice(1);
+      const lastNameCap = lastName.charAt(0)
+                                  .toUpperCase() + lastName.slice(1);
+      
+      return `${firstNameCap} ${lastNameCap}`;
+    } else {
+      return name.charAt(0)
+                 .toUpperCase() + name.slice(1);
+    }
+  }
+  
+  function reOrganizeNumber(phoneNumber) {
+    return phoneNumber.slice(0,
+                             3) + "-" + phoneNumber.slice(3,
+                                                          5) + "-" + phoneNumber.slice(5);
+  }
+  
   
   const FeedbackSchema = Yup.object()
                             .shape({
@@ -29,14 +57,15 @@ const ContactForm = ({ handleAddContact }) => {
                                                    "Name must be at least 3 characters long")
                                               .max(50,
                                                    "Name must be maximum 50 character long")
+                                              .matches(/^[A-Za-z\s]+$/,
+                                                       "Name must contain only letters")
                                               .required("Name is required"),
                                      number: Yup.string()
-                                                .min(7,
-                                                     "The phone number must contain 7 characters")
-                                                .max(7,
-                                                     "The phone number must contain 7 characters")
+                                                .matches(/^\d{7}$/,
+                                                         "The phone number must contain exactly 7 digits")
                                                 .required("Phone number is required"),
                                    });
+  // values")
   
   return (
       <div className={styles.body}>

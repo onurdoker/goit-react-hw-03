@@ -24,6 +24,11 @@ function App() {
     setSearchedPerson(value);
   };
   
+  
+  //TODO => Do not forget to delete console.log
+  console.log(contact);
+  console.log(searchedPerson);
+  
   return (
       <div>
         <h1>Phonebook</h1>
