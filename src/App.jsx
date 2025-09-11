@@ -6,7 +6,7 @@ import { customAlphabet } from "nanoid";
 
 import ContactForm from "./components/contactform/ContactForm";
 import SearchBox from "./components/searchbox/SearchBox.jsx";
-import ContactList from "./components/ContactList/ContactList";
+import ContactList from "./components/contactList/ContactList";
 import Contact from "./components/contact/Contact";
 
 function App() {
