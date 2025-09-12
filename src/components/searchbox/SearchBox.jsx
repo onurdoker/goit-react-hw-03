@@ -8,7 +8,7 @@ const SearchBox = ({ handleSearchChange }) => {
   
   const handleSearchSubmit = (event) => {
     const value = event.currentTarget.value;
-    if (value === "" || /^[A-Za-z\s]+$/.test(value)) {
+    if (value === "" || /^[A-Za-zĞÜŞİÖÇğüşıöç\s]+$/.test(value)) {
       handleSearchChange(event.currentTarget.value);
       setError("");
     } else {
