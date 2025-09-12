@@ -66,12 +66,13 @@ const ContactForm = ({ handleAddContact }) => {
                                                    "Name must be at least 3 characters long")
                                               .max(50,
                                                    "Name must be maximum 50 character long")
-                                              .matches(/^[A-Za-z\s]+$/,
+                                              .matches(/^[A-Za-zĞÜŞİÖÇğüşıöç\s]+$/,
                                                        "Name must contain only letters")
                                               .required("Name is required"),
                                      number: Yup.string()
                                                 .matches(/^\d{7}$/,
-                                                         "The phone number must contain exactly 7 digits")
+                                                         "The phone number must contain exactly 7 digits" +
+                                                         " (for example: 1234567)")
                                                 .required("Phone number is required"),
                                    });
   // values")
